@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pour mon homme ❤️</title>
+<style>
+/* Fond animé */
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(120deg, #ffe6e6, #ffcccc, #ffe6f0);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Cœur central parfait */
+.heart {
+  position: relative;
+  width: 100px;
+  height: 90px;
+  background-color: red;
+  transform: rotate(-45deg);
+  animation: pulse 1s infinite;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 90px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -50px;
+  left: 0;
+}
+
+.heart::after {
+  left: 50px;
+  top: 0;
+}
+
+@keyframes pulse {
+  0% { transform: rotate(-45deg) scale(1); }
+  50% { transform: rotate(-45deg) scale(1.2); }
+  100% { transform: rotate(-45deg) scale(1); }
+}
+
+.heart:hover {
+  transform: rotate(-45deg) scale(1.3);
+  transition: transform 0.2s;
+}
+
+/* Message */
+#message {
+  display: none;
+  font-size: 24px;
+  color: #d10000;
+  text-align: center;
+  margin-top: 20px;
+  max-width: 600px;
+  line-height: 1.6;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Cœurs flottants */
+.floating-heart {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: url('https://i.ibb.co/0Vt6D7t/heart.png') no-repeat center center;
+  background-size: contain;
+  pointer-events: none;
+  animation-name: floatUpLoop;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes floatUpLoop {
+  0% { transform: translateY(0) scale(0.5); opacity: 1; }
+  100% { transform: translateY(-800px) scale(1); opacity: 0; }
+}
+
+/* Photos avec effet pop */
+.photos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.photo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: transform 0.4s ease;
+
+}
+
+.photo {
+  width: 180px;
+  border-radius: 20px;
+  border: 3px solid #d10000;
+  box-shadow: 0 10px 20px rgba(209,0,0,0.4);
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.6s ease, box-shadow 0.3s ease;
+}
+/* Effet au survol */
+.photo-container:hover .photo {
+  transform: scale(1.12) rotate(-2deg);
+  box-shadow: 0 20px 35px rgba(209, 0, 0, 0.6);
+}
+.photo.show {
+  animation: photoPop 0.6s forwards;
+}
+
+@keyframes photoPop {
+  0% { transform: scale(0) translateY(20px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.photo:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 0 15px 25px rgba(209,0,0,0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Date sous la photo */
+.photo-date {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #fff;
+  background: #d10000;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: bold;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(5px);
+  transition: transform 0.4s ease, opacity 0.4s ease;}
+
+.photo-container:hover .photo-date {
+  opacity: 1;
+  transform: translateY(-5px);
+}
+.photo-date.show {
+  opacity: 1;
+  transform: translateY(0);
+}.love-question button {
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #fff;
+  background: #d10000;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin: 5px;
+  box-shadow: 0 5px 15px rgba(209,0,0,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.love-question button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(209,0,0,0.6);
+}
+
+.photo-container:hover {
+  animation: softPulse 0.8s ease-in-out;
+}
+
+@keyframes softPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+.heart-text {
+  margin-top: 15px;
+  font-size: 22px;
+  color:#d10000;
+  font-weight: bold;
+  text-align: center;
+  font-family: 'Cairo', sans-serif;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.4);
+}
+
+/* Animation battement */
+.beat-text {
+  animation: textPulse 1s infinite;
+}
+
+@keyframes textPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="heart" onclick="showMessage()"></div>
+<br>
+<div class="heart-text">هدية صغيرة مني ليك ❤️</div>
+
+<div id="message">
+ما فماش عيد، نحبك من اللحظة اللي جمعتنا فيها يا أحلى اختيار<br>
+الله يخليلي وجودك معايا يا روحي<br>
+وتكون ديما سندي وقوتي وضعفي وملجئي وأماني ❤️
+</div>
+
+<div class="photos">
+  <div class="photo-container">
+    <img src="c:\Users\User\Desktop\homme\photo\photo1.jpeg" class="photo" alt="Nous 1">
+    <div class="photo-date">24 Novembre 2025</div>
+  </div>
+  <div class="photo-container">
+    <img src="c:\Users\User\Desktop\homme\photo\photo2.jpeg" class="photo" alt="Nous 2">
+    <div class="photo-date">12 Octobre 2025</div>
+  </div>
+  <div class="photo-container">
+    <img src="c:\Users\User\Desktop\homme\photo\photo3.jpeg" class="photo" alt="Nous 3">
+    <div class="photo-date">2 Novembre 2025</div>
+  </div>
+  <div class="photo-container">
+    <img src="c:\Users\User\Desktop\homme\photo\photo4.jpeg" class="photo" alt="Nous 4">
+    <div class="photo-date">29 Janvier 2026</div>
+  </div>
+</div><!-- Bouton d'amour -->
+<div class="love-question" style="display:none; text-align:center; margin-top:20px;">
+  <button id="loveBtn"> 💖تحبني حبيبي  ؟ </button>
+  <div id="loveOptions" style="display:none; margin-top:15px;">
+    <button id="yesBtn">نعم ❤️</button>
+    <button id="noBtn">لا❌</button>
+  </div>
+  <div id="loveAnswer" style="display:none; margin-top:15px; color:#d10000; font-size:20px;">
+    ❤️ كنت عارفة اللي تحبني! حتى أنا نحبك ❤️
+  </div>
+</div>
+
+</div>
+
+
+<script>
+const message = document.getElementById('message');
+const photos = document.querySelectorAll('.photo');
+const photoDates = document.querySelectorAll('.photo-date');
+
+function showMessage() {
+  message.style.display = 'block';
+  photos.forEach((photo, index) => {
+    setTimeout(() => {
+      photo.classList.add('show');              // affiche la photo
+      photoDates[index].classList.add('show');  // affiche la date
+    }, index * 300); // effet décalé
+  });
+}
+
+// Cœurs flottants en boucle
+setInterval(() => {
+  const heart = document.createElement('div');
+  heart.classList.add('floating-heart');
+  heart.style.left = Math.random() * window.innerWidth + 'px';
+  heart.style.width = 20 + Math.random() * 25 + 'px';
+  heart.style.height = heart.style.width;
+  heart.style.animationDuration = 3 + Math.random() * 4 + 's';
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}, 300);const loveQuestion = document.querySelector('.love-question');
+const loveBtn = document.getElementById('loveBtn');
+const loveOptions = document.getElementById('loveOptions');
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+const loveAnswer = document.getElementById('loveAnswer');
+
+function showMessage() {
+  message.style.display = 'block';
+  
+  photos.forEach((photo, index) => {
+    setTimeout(() => {
+      photo.classList.add('show');              // Affiche la photo
+      photoDates[index].classList.add('show');  // Affiche la date
+      // Si c’est la dernière photo, afficher le bouton amour
+      if(index === photos.length - 1) {
+        loveQuestion.style.display = 'block';
+      }
+    }, index * 300); // effet décalé
+  });
+}
+
+// Bouton "Do you love me ?"
+loveBtn.addEventListener('click', () => {
+  loveOptions.style.display = 'block';
+  loveBtn.style.display = 'none';
+});
+
+// Effet “le Non s’échappe”
+noBtn.addEventListener('mouseover', () => {
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 100 - 50;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+// Quand on clique sur Oui
+yesBtn.addEventListener('click', () => {
+  loveOptions.style.display = 'none';
+  loveAnswer.style.display = 'block';
+});
+
+
+</script>
+
+</body>
+</html>
